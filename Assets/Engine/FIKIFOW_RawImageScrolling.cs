@@ -14,10 +14,19 @@ public class FIKIFOW_RawImageScrolling : MonoBehaviour
     public float opacity = 1.0f;
 
     private RawImage _rawImage;
+    private FIKIFOW_BlendController _blendController;
 
     void Start()
     {
         _rawImage = GetComponent<RawImage>();
+        _blendController = GetComponent<FIKIFOW_BlendController>();
+    }
+
+    void OnEnable()
+    {
+        // Ensure initialization on enable
+        if (_rawImage == null) _rawImage = GetComponent<RawImage>();
+        if (_blendController == null) _blendController = GetComponent<FIKIFOW_BlendController>();
     }
 
     void Update()
@@ -37,6 +46,12 @@ public class FIKIFOW_RawImageScrolling : MonoBehaviour
             Color c = _rawImage.color;
             c.a = opacity;
             _rawImage.color = c;
+            
+            // 3. Komunikasi dengan BlendController jika ada
+            if (_blendController != null && _blendController.enabled)
+            {
+                _blendController.UpdateOpacityFromScrolling(opacity);
+            }
         }
     }
 }

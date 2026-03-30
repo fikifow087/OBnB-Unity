@@ -20,6 +20,7 @@ public class FIKIFOW_BlendController : MonoBehaviour
 
     private Graphic targetGraphic;
     private Material blendMaterial;
+    private float _currentOpacity = 1.0f;
 
     private void OnEnable()
     {
@@ -65,6 +66,17 @@ public class FIKIFOW_BlendController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called by RawImageScrolling to sync opacity value
+    /// Opacity control tetap berfungsi dengan blend mode
+    /// </summary>
+    public void UpdateOpacityFromScrolling(float opacity)
+    {
+        _currentOpacity = opacity;
+        // Opacity already handled by RawImageScrolling via color.a
+        // This method exists for potential future tracking/coordination
+    }
+
     private void ApplyBlendMode()
     {
         if (targetGraphic == null) return;
@@ -93,6 +105,7 @@ public class FIKIFOW_BlendController : MonoBehaviour
         blendMaterial.SetFloat("_BlendModeID", (float)blendMode);
         
         // Apply hardware blend settings
+        // Opacity dari RawImageScrolling akan tetap work karena RawImageScrolling set color.a setiap frame
         ApplyHardwareBlendSettings();
     }
 

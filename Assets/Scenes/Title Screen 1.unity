@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
-  m_Material: {fileID: 2035862481}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Material: {fileID: 1637520140}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.4}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 40a46f5f8f5ad8a458d5329db17f50ce, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0
+    x: -2.071324
     y: 0
     width: 2
     height: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FIKIFOW_RawImageScrolling
   speedX: -0.3
   speedY: 0
-  opacity: 1
+  opacity: 0.4
 --- !u!114 &222643539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fb152a45a29f04284c31fb62e05025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FIKIFOW_BlendController
-  blendMode: 3
+  blendMode: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +358,52 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!21 &408552334
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FIKIFOW_BlendMaterial (UI/FIKIFOW_BlendModes)
+  m_Shader: {fileID: 4800000, guid: ada7a51d73ae5734e8a0bf2e0e75a192, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BlendModeID: 2
+    - _BlendOp: 0
+    - _BlendOpAlpha: 0
+    - _ColorMask: 15
+    - _DstBlend: 10
+    - _DstBlendAlpha: 10
+    - _SrcBlend: 2
+    - _SrcBlendAlpha: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,52 +531,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!21 &799631604
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: FIKIFOW_BlendMaterial (UI/FIKIFOW_BlendModes)
-  m_Shader: {fileID: 4800000, guid: ada7a51d73ae5734e8a0bf2e0e75a192, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _BlendModeID: 9
-    - _BlendOp: 0
-    - _BlendOpAlpha: 0
-    - _ColorMask: 15
-    - _DstBlend: 1
-    - _DstBlendAlpha: 10
-    - _SrcBlend: 5
-    - _SrcBlendAlpha: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FIKIFOW_RawImageScrolling
   speedX: 0.04
   speedY: 0
-  opacity: 1
+  opacity: 0.8
 --- !u!114 &1045283188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,8 +833,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
-  m_Material: {fileID: 799631604}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Material: {fileID: 408552334}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 5c29e6f608e3871479ed2c7ce5fa157b, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0
+    x: 0.27617654
     y: 0
     width: 2
     height: 1
@@ -868,7 +868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fb152a45a29f04284c31fb62e05025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FIKIFOW_BlendController
-  blendMode: 9
+  blendMode: 2
 --- !u!1 &1438899904
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +944,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438899904}
   m_CullTransparentMesh: 1
+--- !u!21 &1550367588
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FIKIFOW_BlendMaterial (UI/FIKIFOW_BlendModes)
+  m_Shader: {fileID: 4800000, guid: ada7a51d73ae5734e8a0bf2e0e75a192, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BlendModeID: 0
+    - _BlendOp: 0
+    - _BlendOpAlpha: 0
+    - _ColorMask: 15
+    - _DstBlend: 10
+    - _DstBlendAlpha: 10
+    - _SrcBlend: 5
+    - _SrcBlendAlpha: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!21 &1637520140
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FIKIFOW_BlendMaterial (UI/FIKIFOW_BlendModes)
+  m_Shader: {fileID: 4800000, guid: ada7a51d73ae5734e8a0bf2e0e75a192, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BlendModeID: 1
+    - _BlendOp: 0
+    - _BlendOpAlpha: 0
+    - _ColorMask: 15
+    - _DstBlend: 1
+    - _DstBlendAlpha: 10
+    - _SrcBlend: 5
+    - _SrcBlendAlpha: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &1666053243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1321,7 @@ GameObject:
   - component: {fileID: 1795766569}
   - component: {fileID: 1795766571}
   - component: {fileID: 1795766570}
+  - component: {fileID: 1795766572}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -1267,7 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 1550367588}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1290,6 +1383,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795766568}
   m_CullTransparentMesh: 1
+--- !u!114 &1795766572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795766568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fb152a45a29f04284c31fb62e05025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FIKIFOW_BlendController
+  blendMode: 0
 --- !u!1 &2002982990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,52 +1533,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002982990}
   m_CullTransparentMesh: 1
---- !u!21 &2035862481
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: FIKIFOW_BlendMaterial (UI/FIKIFOW_BlendModes)
-  m_Shader: {fileID: 4800000, guid: ada7a51d73ae5734e8a0bf2e0e75a192, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _BlendModeID: 3
-    - _BlendOp: 0
-    - _BlendOpAlpha: 0
-    - _ColorMask: 15
-    - _DstBlend: 10
-    - _DstBlendAlpha: 10
-    - _SrcBlend: 2
-    - _SrcBlendAlpha: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
