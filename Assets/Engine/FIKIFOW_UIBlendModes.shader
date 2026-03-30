@@ -115,16 +115,16 @@ Shader "UI/FIKIFOW_BlendModes"
 
                 int mode = (int)_BlendModeID;
 
-                if (mode == 3) // Multiply
+                // Mode 2: Multiply - opacity adjustment
+                if (mode == 2) // Multiply
                 {
-                    // Multiply: Blend DstColor Zero -> FrameBuffer = Dst * Frag
-                    // Agar Opacity bekerja (saat alpha 0, warna jadi background asli), Frag harus lerp ke Putih
+                    // Lerp fragment ke putih berdasarkan alpha untuk proper opacity handling
                     color.rgb = lerp(half3(1,1,1), color.rgb, color.a);
                 }
-                else if (mode == 8 || mode == 10 || mode == 20 || mode == 21) 
+                // Mode 1: Add/Screen - multiply alpha ke RGB
+                else if (mode == 1 || mode == 3) 
                 {
-                    // Screen, LinearDodge(Add), Exclusion, Subtract
-                    // Semua rumus Blend mode ini di Hardware mewajibkan Fragment Alpha dikalikan ke RGB
+                    // Add dan Screen mode membutuhkan alpha dikalikan ke RGB
                     color.rgb = color.rgb * color.a;
                 }
 

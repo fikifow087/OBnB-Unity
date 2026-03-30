@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(RawImage))]
 public class FIKIFOW_RawImageScrolling : MonoBehaviour
 {
@@ -23,13 +24,16 @@ public class FIKIFOW_RawImageScrolling : MonoBehaviour
     {
         if (_rawImage != null && _rawImage.texture != null)
         {
-            // 1. Logika Scrolling (Seamless)
-            Rect rect = _rawImage.uvRect;
-            rect.x += speedX * Time.deltaTime;
-            rect.y += speedY * Time.deltaTime;
-            _rawImage.uvRect = rect;
+            // 1. Logika Scrolling (Seamless) - hanya di Play Mode
+            if (Application.isPlaying)
+            {
+                Rect rect = _rawImage.uvRect;
+                rect.x += speedX * Time.deltaTime;
+                rect.y += speedY * Time.deltaTime;
+                _rawImage.uvRect = rect;
+            }
 
-            // 2. Logika Opacity
+            // 2. Logika Opacity - realtime di Edit Mode & Play Mode
             Color c = _rawImage.color;
             c.a = opacity;
             _rawImage.color = c;

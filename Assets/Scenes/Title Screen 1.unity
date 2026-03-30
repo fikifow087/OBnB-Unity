@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fb152a45a29f04284c31fb62e05025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FIKIFOW_BlendController
-  blendMode: 8
+  blendMode: 3
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,13 +1456,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlendModeID: 8
+    - _BlendModeID: 3
     - _BlendOp: 0
     - _BlendOpAlpha: 0
     - _ColorMask: 15
-    - _DstBlend: 1
+    - _DstBlend: 10
     - _DstBlendAlpha: 10
-    - _SrcBlend: 4
+    - _SrcBlend: 2
     - _SrcBlendAlpha: 1
     - _Stencil: 0
     - _StencilComp: 8

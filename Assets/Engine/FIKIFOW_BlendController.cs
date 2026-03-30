@@ -8,38 +8,10 @@ public class FIKIFOW_BlendController : MonoBehaviour
 {
     public enum BlendMode
     {
-        // 1. Normal Group
         Normal = 0,
-        Dissolve = 1,
-        
-        // 2. Darken Group
-        Darken = 2,
-        Multiply = 3,
-        ColorBurn = 4,
-        LinearBurn = 5,
-        DarkerColor = 6,
-        
-        // 3. Lighten Group
-        Lighten = 7,
-        Screen = 8,
-        ColorDodge = 9,
-        LinearDodge = 10,
-        LighterColor = 11,
-        
-        // 4. Contrast Group
-        Overlay = 12,
-        SoftLight = 13,
-        HardLight = 14,
-        VividLight = 15,
-        LinearLight = 16,
-        PinLight = 17,
-        HardMix = 18,
-        
-        // 5. Inversion/Cancellation Group
-        Difference = 19,
-        Exclusion = 20,
-        Subtract = 21,
-        Divide = 22
+        Add = 1,
+        Multiply = 2,
+        Screen = 3
     }
 
     [Header("Blend Settings")]
@@ -133,16 +105,14 @@ public class FIKIFOW_BlendController : MonoBehaviour
         switch (blendMode)
         {
             case BlendMode.Normal:
-            case BlendMode.Dissolve:
                 srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
                 dstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
                 blendOp = UnityEngine.Rendering.BlendOp.Add;
                 break;
                 
-            case BlendMode.Darken:
-                // Darken: Min(src, dst) - approximated with multiply-like behavior
-                srcBlend = UnityEngine.Rendering.BlendMode.DstColor;
-                dstBlend = UnityEngine.Rendering.BlendMode.Zero;
+            case BlendMode.Add:
+                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
+                dstBlend = UnityEngine.Rendering.BlendMode.One;
                 blendOp = UnityEngine.Rendering.BlendOp.Add;
                 break;
                 
@@ -152,97 +122,9 @@ public class FIKIFOW_BlendController : MonoBehaviour
                 blendOp = UnityEngine.Rendering.BlendOp.Add;
                 break;
                 
-            case BlendMode.ColorBurn:
-                // Similar to multiply
-                srcBlend = UnityEngine.Rendering.BlendMode.DstColor;
-                dstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.LinearBurn:
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.One;
-                blendOp = UnityEngine.Rendering.BlendOp.ReverseSubtract;
-                break;
-                
-            case BlendMode.DarkerColor:
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.Lighten:
-                // Lighten: Max(src, dst) - approximated
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.One;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
             case BlendMode.Screen:
                 srcBlend = UnityEngine.Rendering.BlendMode.OneMinusDstColor;
                 dstBlend = UnityEngine.Rendering.BlendMode.One;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.ColorDodge:
-                // Similar to screen
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.One;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.LinearDodge:
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.One;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.LighterColor:
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.One;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.Overlay:
-                // Complex blend - using standard alpha blend
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.SoftLight:
-            case BlendMode.HardLight:
-            case BlendMode.VividLight:
-            case BlendMode.LinearLight:
-            case BlendMode.PinLight:
-            case BlendMode.HardMix:
-                // Complex blends - using standard alpha blend
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.Difference:
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.Exclusion:
-                srcBlend = UnityEngine.Rendering.BlendMode.OneMinusDstColor;
-                dstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcColor;
-                blendOp = UnityEngine.Rendering.BlendOp.Add;
-                break;
-                
-            case BlendMode.Subtract:
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.One;
-                blendOp = UnityEngine.Rendering.BlendOp.ReverseSubtract;
-                break;
-                
-            case BlendMode.Divide:
-                srcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
-                dstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
                 blendOp = UnityEngine.Rendering.BlendOp.Add;
                 break;
         }
