@@ -36,6 +36,7 @@ public class EVENT_TitleScreen1 : MonoBehaviour
     }
     IEnumerator ConfirmSelection()
     {
+        Debug.Log("Fase TITLE SCREEN saat ini adalah: " + TITLE_MAIN_PHASE);
         if (TITLE_MAIN_PHASE == 1)
         {
             if (sfxConfirm != null)
@@ -53,7 +54,7 @@ public class EVENT_TitleScreen1 : MonoBehaviour
                 {
                     idleAnim.StopIdleAnimation();
                     // Fade out text dengan durasi 60 frame (1 detik)
-                    yield return StartCoroutine(FIKIFOW_GameOBJ_Transition.FadeOut(pressSpaceText, 60));
+                    yield return StartCoroutine(FIKIFOW_GameOBJ_Transition.FadeOut(pressSpaceText, 0f, 60));
                 }
                 else
                 {
@@ -62,37 +63,38 @@ public class EVENT_TitleScreen1 : MonoBehaviour
             }
 
             yield return FIKIFOW_HoldFrames.Wait(90);
-            uiGroup1.SetActive(true);
+            yield return StartCoroutine(FIKIFOW_GameOBJ_Transition.FadeIn(uiGroup1, 0.6f, 60));
+            TITLE_MAIN_PHASE = 2;
             Invoke("LanguagePhase", 2.0f);  
         }
     }
 
     void LanguagePhase()
     {
+        Debug.Log("Fase TITLE SCREEN saat ini adalah: " + TITLE_MAIN_PHASE);
         if (TITLE_MAIN_PHASE == 2)
         {
-            Debug.Log("Fase saat ini adalah: " + TITLE_MAIN_PHASE);
+ 
         }
     }
     
     void WarningPhase()
     {
+        Debug.Log("Fase TITLE SCREEN saat ini adalah: " + TITLE_MAIN_PHASE);
         if (TITLE_MAIN_PHASE == 3)
         {
             Invoke("GoToNextScene", 2.0f);  
         }
-
-        Debug.Log("Fase saat ini adalah: " + TITLE_MAIN_PHASE);
     }
 
     void GoToNextScene()
     {
+        Debug.Log("Fase TITLE SCREEN saat ini adalah: " + TITLE_MAIN_PHASE);
         if (TITLE_MAIN_PHASE == 4)
         {
 
         }
         // Ganti "GameplayScene" dengan nama scene game kamu sesungguhnya
         // SceneManager.LoadScene("GameplayScene");
-        Debug.Log("Fase saat ini adalah: " + TITLE_MAIN_PHASE);
     }
 }
