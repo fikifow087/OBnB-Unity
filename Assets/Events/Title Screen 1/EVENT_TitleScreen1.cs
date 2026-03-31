@@ -1,13 +1,16 @@
 // Nama File: EVENT_TitleConfirm.cs
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro; 
 using System.Collections;
 
 [AddComponentMenu("EVENT/Title Screen Confirm 1")]
 public class EVENT_TitleScreen1 : MonoBehaviour 
 {
     [Header("Audio Settings")]
-    public AudioSource sfxConfirm; // Tarik Audio Source SFX ke sini
+    public AudioSource sfxBoom; // Tarik Audio Source SFX ke sini
+    public AudioSource sfxButtonOk; // Tarik Audio Source BGM ke sini
 
     [Header("UI Reference")]
     public GameObject pressSpaceText; // Tarik objek "txt-PRESS TO" ke sini
@@ -15,6 +18,10 @@ public class EVENT_TitleScreen1 : MonoBehaviour
     public GameObject uiGroup1;
     public GameObject uiGroup2;
     public GameObject uiGroup3;
+
+    [Header("Language Settings")]
+    public TMP_Dropdown dropdownLang; // Tarik objek Dropdown_Lang ke sini
+    public string selectedLangCode = ""; // Variabel output
 
     private int TITLE_MAIN_PHASE = 0;
 
@@ -39,9 +46,9 @@ public class EVENT_TitleScreen1 : MonoBehaviour
         Debug.Log("Fase TITLE SCREEN saat ini adalah: " + TITLE_MAIN_PHASE);
         if (TITLE_MAIN_PHASE == 1)
         {
-            if (sfxConfirm != null)
+            if (sfxBoom != null)
             {
-                sfxConfirm.Play();
+                sfxBoom.Play();
             }
 
             // Efek Visual (Menyembunyikan teks kedip-kedip dengan fade out)
@@ -62,10 +69,10 @@ public class EVENT_TitleScreen1 : MonoBehaviour
                 }
             }
 
-            yield return FIKIFOW_HoldFrames.Wait(90);
-            yield return StartCoroutine(FIKIFOW_GameOBJ_Transition.FadeIn(uiGroup1, 0.6f, 60));
+            yield return FIKIFOW_HoldFrames.Wait(60);
+            yield return StartCoroutine(FIKIFOW_GameOBJ_Transition.FadeIn(uiGroup1, 0.7f, 60));
             TITLE_MAIN_PHASE = 2;
-            Invoke("LanguagePhase", 2.0f);  
+            Invoke("LanguagePhase", 1.0f);  
         }
     }
 
@@ -74,8 +81,36 @@ public class EVENT_TitleScreen1 : MonoBehaviour
         Debug.Log("Fase TITLE SCREEN saat ini adalah: " + TITLE_MAIN_PHASE);
         if (TITLE_MAIN_PHASE == 2)
         {
- 
+            uiGroup2.SetActive(true);  // Menu pemilihan bahasa, Btn OK, Dropdown.
         }
+    }
+
+    // --- FUNGSI BARU UNTUK TOMBOL OK ---
+    public void OnClickOkLanguage()
+    {
+        // 1. Mainkan SFX Klik
+        if (sfxButtonOk != null)
+        {
+            sfxButtonOk.Play();
+        }
+
+        // 2. Tentukan variabel berdasarkan pilihan Dropdown
+        // Index 0 = English (gb), Index 1 = Indonesian (id) berdasarkan urutan asset kamu
+        if (dropdownLang.value == 0)
+        {
+            selectedLangCode = "en";
+        }
+        else if (dropdownLang.value == 1)
+        {
+            selectedLangCode = "id";
+        }
+
+        Debug.Log("Bahasa yang dipilih: " + selectedLangCode);
+
+        // 3. Pindah ke Fase berikutnya
+        TITLE_MAIN_PHASE = 3;
+        uiGroup2.SetActive(false); // Sembunyikan pilihan bahasa
+        WarningPhase();
     }
     
     void WarningPhase()
@@ -83,7 +118,9 @@ public class EVENT_TitleScreen1 : MonoBehaviour
         Debug.Log("Fase TITLE SCREEN saat ini adalah: " + TITLE_MAIN_PHASE);
         if (TITLE_MAIN_PHASE == 3)
         {
-            Invoke("GoToNextScene", 2.0f);  
+
+            uiGroup3.SetActive(true);  // Menu peringatan sebelum memulai game.
+
         }
     }
 
