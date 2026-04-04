@@ -25,6 +25,9 @@ public class FIKIFOW_TimedAttackFlat : MonoBehaviour
     private float startingY;
     private int direction = 1; 
 
+    // Variabel baru untuk menyimpan posisi target yang sudah diacak
+    private float targetPosX = 0f;
+
     void Start()
     {
         startingY = cursor.anchoredPosition.y;
@@ -37,12 +40,26 @@ public class FIKIFOW_TimedAttackFlat : MonoBehaviour
         leftLimit = -halfWidth;
         rightLimit = halfWidth;
 
+        // --- FITUR RANDOMIZER ZONA ---
+        // Hitung batas maksimal agar zona Okelah tidak tembus ke luar bar Hitam
+        float okelahHalfWidth = (okelahBar.rect.width * okelahBar.localScale.x) / 2f;
+        
+        float minX = leftLimit + okelahHalfWidth;
+        float maxX = rightLimit - okelahHalfWidth;
+        
+        // Acak posisi target di antara minX dan maxX
+        targetPosX = Random.Range(minX, maxX);
+
+        // Geser visual UI Okelah dan Perfect ke posisi yang baru diacak
+        okelahBar.anchoredPosition = new Vector2(targetPosX, okelahBar.anchoredPosition.y);
+        perfectBar.anchoredPosition = new Vector2(targetPosX, perfectBar.anchoredPosition.y);
+        // -----------------------------
+
         direction = 1; 
         ResetCursor();
         isActive = true;
 
-        // Log saat Timed Attack baru mulai
-        Debug.Log("Timed Attack Dimulai!");
+        Debug.Log("Timed Attack Dimulai! Target Posisi X: " + targetPosX);
     }
 
     private void ResetCursor()
@@ -79,24 +96,26 @@ public class FIKIFOW_TimedAttackFlat : MonoBehaviour
     void CheckResult(float currentX)
     {
         isActive = false;
-        float distanceFromCenter = Mathf.Abs(currentX);
+        
+        // PERUBAHAN PENTING: Hitung jarak dari kursor ke TARGET (bukan ke 0 lagi)
+        float distanceFromTarget = Mathf.Abs(currentX - targetPosX);
 
         float perfectHalfWidth = (perfectBar.rect.width * perfectBar.localScale.x) / 2f;
         float okelahHalfWidth = (okelahBar.rect.width * okelahBar.localScale.x) / 2f;
 
-        if (distanceFromCenter <= perfectHalfWidth)
+        if (distanceFromTarget <= perfectHalfWidth)
         {
-            Debug.Log("<color=green>Perfect!</color>"); // Log Perfect dengan warna
+            Debug.Log("<color=green>Perfect!</color>"); 
             onPerfect.Invoke();
         }
-        else if (distanceFromCenter <= okelahHalfWidth)
+        else if (distanceFromTarget <= okelahHalfWidth)
         {
-            Debug.Log("<color=yellow>Okelah!</color>"); // Log Okelah dengan warna
+            Debug.Log("<color=yellow>Okelah!</color>"); 
             onOkelah.Invoke();
         }
         else
         {
-            Debug.Log("<color=red>Miss!</color>"); // Log Miss dengan warna
+            Debug.Log("<color=red>Miss!</color>"); 
             onMiss.Invoke();
         }
     }
